@@ -1,0 +1,47 @@
+name: Website
+
+# Publishes this site to GitHub Pages (https://ferrix-os.github.io/). The
+# images live once in Ferrix's docs/brand/, because its README uses them
+# too, and build.sh reads them from beside it: so the site is built where
+# it sits in Ferrix, at docs/website.
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          repository: ferrix-os/ferrix
+          sparse-checkout: docs/brand
+      - uses: actions/checkout@v6
+        with:
+          path: docs/website
+      - name: Assemble the site
+        run: sh docs/website/build.sh _site
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: _site
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4
