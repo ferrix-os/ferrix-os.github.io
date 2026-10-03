@@ -78,8 +78,7 @@ kbd { border: 1px solid var(--line); border-bottom-width: 2px; border-radius: 5p
 .hero {
   position: relative; overflow: hidden; padding: 72px 0 56px;
   background:
-    radial-gradient(600px 400px at 8% -10%, color-mix(in srgb, var(--rust) 22%, transparent), transparent 70%),
-    url("assets/lattice.svg");
+    radial-gradient(600px 400px at 8% -10%, color-mix(in srgb, var(--rust) 22%, transparent), transparent 70%);
 }
 .hero-in { display: grid; grid-template-columns: 1fr; gap: 48px; }
 .eyebrow { color: var(--rust); font-weight: 650; font-size: 14px; letter-spacing: .08em;
