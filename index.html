@@ -241,6 +241,9 @@
       <li><time datetime="2026-09-22">Sep 22</time> <b><code>rustc</code> compiles and runs a program</b></li>
       <li><time datetime="2026-09-23">Sep 23</time> <b>Ferrix builds its own image</b></li>
       <li><time datetime="2026-09-26">Sep 26</time> Chrome plays video with sound on the desktop</li>
+      <li><time datetime="2026-09-29">Sep 29</time> Steam signs in, drawn through yserver</li>
+      <li><time datetime="2026-10-02">Oct 2</time> Steam's store at 60 frames a second</li>
+      <li><time datetime="2026-10-03">Oct 3</time> NVIDIA's driver on an RTX 3060; Ferrix builds itself on a Pixel 7</li>
     </ol>
   </div>
 </section>
@@ -271,10 +274,11 @@ cargo xtask check</pre>
   <div class="wrap">
     <h2>Where it's going</h2>
     <div class="road">
-      <div><h3 class="done">Done</h3><p>The boot test covers stages 0&ndash;12 on three architectures. <code>rustc</code>, networking, dynamic linking and the Wayland compositor have their own tests.</p></div>
-      <div><h3 class="doing">In progress</h3><p>Authentication, process isolation, XWayland and the rest of the desktop work. The first 32-bit pieces needed for Steam are under way.</p></div>
-      <div><h3>Further out</h3><p>Real-time domains, a native GPU driver for bare metal and Steam itself.</p></div>
+      <div><h3 class="done">Done</h3><p>The boot test covers stages 0&ndash;12 on three architectures. <code>rustc</code> compiles and runs programs on Ferrix, and Ferrix builds its own image: on x86-64, and on Arm inside Ferrix on a Pixel 7. The desktop composites on the GPU, Chrome browses with sound, and Steam's store draws through yserver, Ferrix's X server in Rust. A person logs in on the console, through <code>authd</code>.</p></div>
+      <div><h3 class="doing">In progress</h3><p>Games from Steam's library. NVIDIA's own driver on an RTX 3060, which boots its GSP and answers <code>nvidia-smi</code>. Mount namespaces and seccomp, after pid, UTS, IPC and cgroup namespaces. A channel round trip as fast as seL4's, and shorter test runs.</p></div>
+      <div><h3>Further out</h3><p>Real-time domains, and bare metal with a GPU driver of Ferrix's own.</p></div>
     </div>
+    <p class="note">As of 3 October 2026.</p>
     <p class="note"><a href="https://github.com/ferrix-os/ferrix/tree/main/docs/roadmap">Read the full roadmap &rarr;</a></p>
   </div>
 </section>
