@@ -1,6 +1,6 @@
 # ferrix-os.github.io
 
-Ferrix's website, served at <https://ferrix-os.github.io/>. Pushing to
+Ferrix's website, served at <https://ferrix-os.org/>. Pushing to
 `main` publishes it (`.github/workflows/pages.yml`).
 
 It is a component of [Ferrix](https://github.com/ferrix-os/ferrix), checked out at `docs/website` there

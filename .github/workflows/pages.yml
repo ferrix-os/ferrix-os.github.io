@@ -1,6 +1,6 @@
 name: Website
 
-# Publishes this site to GitHub Pages (https://ferrix-os.github.io/). The
+# Publishes this site to GitHub Pages (https://ferrix-os.org/). The
 # images live once in Ferrix's docs/brand/, because its README uses them
 # too, and build.sh reads them from beside it: so the site is built where
 # it sits in Ferrix, at docs/website.
