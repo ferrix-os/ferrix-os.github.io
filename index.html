@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Ferrix: a Rust operating system that runs Linux apps</title>
-<meta name="description" content="Ferrix is an experimental Rust operating system. Boot its Wayland desktop in QEMU and run tested Linux apps unchanged on its own kernel.">
+<title>Ferrix: a Rust operating system written by Claude Code agents</title>
+<meta name="description" content="Ferrix is an experimental Rust operating system written by a fleet of Claude Code sessions, with a person deciding what they build. It runs tested Linux programs, Steam and a Windows game through Proton on its own kernel.">
 <link rel="canonical" href="https://ferrix-os.org/">
 <meta name="theme-color" content="#0d0f12" media="(prefers-color-scheme: dark)">
 <meta name="theme-color" content="#f7f5f2" media="(prefers-color-scheme: light)">
@@ -16,16 +16,16 @@
 
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Ferrix">
-<meta property="og:title" content="Ferrix: Linux apps without Linux">
-<meta property="og:description" content="Boot Ferrix in QEMU and run Chrome, git, curl or rustc on its own Rust kernel. Drivers run as separate processes that can restart after a crash.">
+<meta property="og:title" content="Ferrix: an operating system written by Claude Code agents">
+<meta property="og:description" content="A fleet of Claude Code sessions writes Ferrix, a Rust operating system, and a person decides what they build. It runs Chrome, rustc, Steam and a Windows game on its own kernel, with drivers as restartable processes.">
 <meta property="og:url" content="https://ferrix-os.org/">
 <meta property="og:image" content="https://ferrix-os.org/assets/social-preview.png">
 <meta property="og:image:width" content="1280">
 <meta property="og:image:height" content="640">
 <meta property="og:image:alt" content="Ferrix: Linux apps without Linux, beside a serial log showing rustc and a Ferrix image boot">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Ferrix: Linux apps without Linux">
-<meta name="twitter:description" content="Chrome, git, curl and rustc run unchanged on Ferrix's own Rust kernel. Boot it in QEMU and see for yourself.">
+<meta name="twitter:title" content="Ferrix: an operating system written by Claude Code agents">
+<meta name="twitter:description" content="Claude Code sessions write Ferrix's Rust kernel, drivers and desktop; a person decides what they build. Chrome, rustc and Steam run unchanged on it.">
 <meta name="twitter:image" content="https://ferrix-os.org/assets/social-preview.png">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -40,31 +40,33 @@
     {
       "@type": "SoftwareSourceCode",
       "name": "Ferrix",
-      "description": "An experimental Rust operating system that runs tested Linux programs unchanged on its own kernel. Its disk, network, graphics and input drivers run as restartable processes.",
+      "description": "An experimental Rust operating system written by a fleet of Claude Code sessions, with a person deciding what they build. It runs tested Linux programs unchanged on its own kernel, and its drivers run as restartable processes.",
       "codeRepository": "https://github.com/ferrix-os/ferrix",
       "programmingLanguage": "Rust",
       "license": "https://opensource.org/licenses/MIT",
       "url": "https://ferrix-os.org/",
       "image": "https://ferrix-os.org/assets/social-preview.png",
-      "keywords": "Rust operating system, Rust kernel, OS development, Linux ABI compatibility, userland drivers, btrfs, Wayland compositor"
+      "keywords": "Rust operating system, Rust kernel, Claude Code, AI agents, OS development, Linux ABI compatibility, userland drivers, btrfs, Wayland compositor"
     },
     {
       "@type": "SoftwareApplication",
       "name": "Ferrix",
       "applicationCategory": "OperatingSystem",
-      "operatingSystem": "x86-64, AArch64, ARMv7-A (QEMU, STM32MP157D-DK1, Pixel 7)",
+      "operatingSystem": "x86-64, AArch64, ARMv7-A (QEMU, Intel N150, Pixel 7, STM32MP157D-DK1)",
       "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
       "url": "https://ferrix-os.org/"
     },
     {
       "@type": "FAQPage",
       "mainEntity": [
-        { "@type": "Question", "name": "Is Ferrix based on Linux?",
-          "acceptedAnswer": { "@type": "Answer", "text": "No. Ferrix has its own Rust kernel, drivers, file systems, C library, shell and compositor. It implements the Linux system-call ABI used by the programs we test, so those binaries can run unchanged." } },
         { "@type": "Question", "name": "Who writes the code?",
-          "acceptedAnswer": { "@type": "Answer", "text": "Mostly Claude sessions, working in separate git worktrees. The project owner sets priorities and reviews the results. The tests and working rules are in the repository." } },
+          "acceptedAnswer": { "@type": "Answer", "text": "A fleet of Claude Code sessions: a product owner session, worker agents in their own git worktrees, a certification consultant and quality roles. A person, the customer, decides scope, priorities and every question of judgement. The working rules and the tests are in the repository." } },
+        { "@type": "Question", "name": "Is Ferrix based on Linux?",
+          "acceptedAnswer": { "@type": "Answer", "text": "No. Ferrix has its own Rust kernel, drivers, file systems, C library, shell and compositor. It implements the Linux system-call ABI used by the programs it is tested with, so those binaries run unchanged." } },
+        { "@type": "Question", "name": "Is any of it certified?",
+          "acceptedAnswer": { "@type": "Answer", "text": "No. Certification of the kernel's core is an aim. A certification consultant, itself a Claude session, reviews every change to that core before it lands. That review is internal, not independent, and no outside assessor is involved." } },
         { "@type": "Question", "name": "Can I use it every day?",
-          "acceptedAnswer": { "@type": "Answer", "text": "No. Ferrix is an experimental system. It runs a desktop, a browser and a compiler, but authentication, namespaces and seccomp are still being written." } },
+          "acceptedAnswer": { "@type": "Answer", "text": "No. Ferrix is an experimental system. It runs a desktop, a browser, a compiler and a game, but most of its tests run in QEMU and much of it is unfinished." } },
         { "@type": "Question", "name": "How can I help?",
           "acceptedAnswer": { "@type": "Answer", "text": "Try booting it and file an issue if something fails. You can follow releases on GitHub." } }
       ]
@@ -81,9 +83,9 @@
       <img src="assets/logo-mark.svg" alt="" width="28" height="28"> Ferrix
     </a>
     <nav aria-label="Sections">
-      <a href="#proof">Tests</a>
+      <a href="#built">Who builds it</a>
+      <a href="#week">This week</a>
       <a href="#features">What's inside</a>
-      <a href="#built">Who wrote it</a>
       <a href="#try">Try it</a>
       <a href="#faq">FAQ</a>
     </nav>
@@ -98,31 +100,100 @@
 <section class="hero">
   <div class="wrap hero-in">
     <div class="hero-copy">
-      <p class="eyebrow">Ferrix &middot; an experimental Rust OS</p>
+      <p class="eyebrow">Ferrix &middot; an operating system written by Claude Code agents</p>
       <h1>Linux apps without Linux.</h1>
-      <p class="lede">Boot Ferrix in QEMU and run Chrome, <code>rustc</code>, <code>git</code> or
-        <code>curl</code> unchanged on its own Rust kernel. Its disk, network, graphics and input drivers
-        run as separate processes that can restart after a crash.</p>
+      <p class="lede">A fleet of Claude Code sessions writes Ferrix, a Rust operating system, and a person,
+        the customer, decides what they build. On its own kernel it runs Chrome, <code>rustc</code>,
+        <code>git</code>, Steam and, through Proton, a Windows game. Its disk, network, graphics, input
+        and power drivers run as separate processes that can restart after a crash.</p>
       <div class="ctas">
         <a class="btn" href="https://github.com/ferrix-os/ferrix">View the source</a>
-        <a class="btn btn-ghost" href="#try">Build and boot it &rarr;</a>
+        <a class="btn btn-ghost" href="#built">How the agents work &rarr;</a>
       </div>
-      <p class="arches">x86-64 &middot; AArch64 &middot; ARMv7-A &middot; MIT licensed</p>
+      <p class="arches">x86-64 &middot; AArch64 &middot; ARMv7-A &middot; MIT licensed &middot; experimental</p>
     </div>
+    <!-- TODO(hero-n150): a real capture of the N150's desktop with Endfield windowed, being taken.
+         It goes in Ferrix's docs/brand/screenshots/hero-n150.png (1920x1080 PNG, under 1.5 MB,
+         a neutral wallpaper); build.sh copies it to assets/. Check the alt text and caption
+         against it. -->
     <figure class="hero-shot">
-      <img src="assets/desktop-hero.png" width="1920" height="1080"
-           alt="The Ferrix desktop: the hyprix Wayland compositor tiling btop, a zinc terminal and Chrome on rust-lang.org">
-      <figcaption>Ferrix running under KVM on x86-64, with btop, the zinc shell and Chrome open in its Wayland desktop.</figcaption>
+      <img src="assets/hero-n150.png" width="1920" height="1080"
+           alt="Ferrix's desktop on an Intel N150 mini PC, with Arknights: Endfield running in a window">
+      <figcaption>Ferrix on an Intel N150 mini PC, with Arknights: Endfield running in a window through Ferrix's own Intel GPU driver.</figcaption>
     </figure>
   </div>
 </section>
 
 <section class="stats" aria-label="Ferrix in numbers">
   <div class="wrap stats-in">
-    <div><b>3</b><span>architectures in the boot test</span></div>
-    <div><b>5</b><span>virtio drivers outside the kernel</span></div>
-    <div><b>249</b><span>interrupted writes checked on btrfs</span></div>
-    <div><b>Chrome</b><span>running as an unmodified Linux program</span></div>
+    <div><b>3,479</b><span>commits on <code>main</code> since 11 September 2026</span></div>
+    <div><b>965k</b><span>lines of Rust in the main repository</span></div>
+    <div><b>3</b><span>architectures booted on every landing that changes the image</span></div>
+    <div><b>21.5 fps</b><span>Arknights: Endfield on an Intel N150, standing</span></div>
+  </div>
+</section>
+
+<section id="built" class="section">
+  <div class="wrap built">
+    <div>
+      <h2>Who builds it</h2>
+      <p>Ferrix is not one long chat. It is a team of Claude Code sessions with roles, and one person,
+        the customer, above them. The customer decides scope, priorities and every question of judgement:
+        which game to aim at, how slim the kernel stays, whether a power limit may be raised on real hardware.</p>
+      <p>A <b>product owner</b> session turns those requests into tasks and starts agents for them.
+        <b>Worker agents</b> each work in a git worktree of their own, build and boot their change in QEMU,
+        and send it to a shared <b>gate pool</b> that runs the tests it needs. A <b>landing lock</b> lets
+        one session at a time move <code>main</code>, fast-forward only. <b>Quality roles</b> watch CI,
+        flaky tests, documentation drift and performance.</p>
+      <p>A <b>certification consultant</b>, another Claude session, reviews every change to the kernel's
+        certified core before it lands and asks for a negative control: the check is broken on purpose and
+        must fail. The aim is Common Criteria EAL5+, DO-178C DAL C, IEC 62304 Class C and EN 50716 SIL 2.
+        Nothing is certified, and the review is internal, not independent.</p>
+      <p>The fleet makes mistakes. Each <a href="https://github.com/ferrix-os/ferrix/blob/main/docs/CONVENTIONS.md">working rule</a>
+        says which mistake it came from, the <a href="https://github.com/ferrix-os/ferrix/blob/main/AGENTS.md">roles</a>
+        are written down, and the <a href="https://github.com/ferrix-os/ferrix/blob/main/docs/BACKLOG.md">backlog</a>
+        tracks what is broken.</p>
+    </div>
+    <ol class="timeline" aria-label="Milestones">
+      <li><time datetime="2026-09-11">Sep 11</time> First commit: boot, memory, traps</li>
+      <li><time datetime="2026-09-14">Sep 14</time> A ring-3 disk driver behind an IOMMU, and btrfs</li>
+      <li><time datetime="2026-09-22">Sep 22</time> <b><code>rustc</code> compiles and runs a program</b></li>
+      <li><time datetime="2026-09-23">Sep 23</time> <b>Ferrix builds its own image</b></li>
+      <li><time datetime="2026-09-26">Sep 26</time> Chrome plays video with sound on the desktop</li>
+      <li><time datetime="2026-09-30">Sep 30</time> Claude Code runs a session on Ferrix</li>
+      <li><time datetime="2026-10-03">Oct 3</time> NVIDIA's driver on an RTX 3060; Ferrix builds its own image on a Pixel 7</li>
+      <li><time datetime="2026-10-10">Oct 10</time> Wine's notepad draws a window on hyprix</li>
+      <li><time datetime="2026-10-15">Oct 15</time> Ferrix boots on an Intel N150 mini PC</li>
+      <li><time datetime="2026-10-21">Oct 21</time> v0.1.1: the desktop as a zip that plain QEMU boots</li>
+      <li><time datetime="2026-10-23">Oct 23</time> <b>Arknights: Endfield from Steam, on Ferrix's own Intel GPU driver</b></li>
+    </ol>
+  </div>
+</section>
+
+<section id="week" class="section alt">
+  <div class="wrap">
+    <h2>This week: a Windows game on a mini PC</h2>
+    <p class="sub">Arknights: Endfield runs on an Intel N150 mini PC under Ferrix, started from Steam
+      through Proton and drawn by Mesa's Vulkan driver over Ferrix's own Intel GPU driver.</p>
+    <div class="proof">
+      <article>
+        <h3>A GPU driver as a process</h3>
+        <p>The Intel GPU driver follows Linux's i915 file by file, but runs as an ordinary process, not in the
+          kernel. On 23 October the game ran at about 21.5 frames a second standing and 19.7 walking, at
+          1280x800. It is not smooth yet: one frame in a hundred takes 60 to 95&nbsp;ms, and finding where
+          those come from is the work under way.</p>
+      </article>
+      <article>
+        <h3>Killed, and back</h3>
+        <p>On the same machine the driver was killed with <code>kill -9</code> while the system ran. Ferrix
+          started it again, its back end was up in 12&nbsp;ms, and Vulkan found the GPU again. Under QEMU
+          the driver can also run as a keeper and a worker, so that a worker can die and be replaced while a
+          Vulkan program goes on.</p>
+      </article>
+    </div>
+    <p class="note">These figures come from runs on that one machine, not from a gate. The
+      <a href="https://github.com/ferrix-os/ferrix/blob/main/docs/INTEL-GPU.md">Intel GPU design</a> says how the
+      driver is built, restarted and split.</p>
   </div>
 </section>
 
@@ -182,120 +253,99 @@
       <article class="card">
         <h3>Linux programs, unchanged</h3>
         <p>Ferrix implements the Linux system-call ABI used by threads, signals, <code>fork</code>,
-          <code>execve</code> and more. Programs can use glibc's dynamic loader. It also runs 32-bit x86 programs.</p>
+          <code>execve</code> and more, 32-bit x86 programs included. Wine and Proton run Windows programs on it.</p>
       </article>
       <article class="card">
         <h3>Drivers in ring 3</h3>
-        <p><code>devmgr</code> starts the virtio disk, network, graphics, input and console drivers as
-          processes. An IOMMU limits their device access on x86-64 and AArch64. A crashed driver can restart.</p>
-      </article>
-      <article class="card">
-        <h3>btrfs, read and write</h3>
-        <p>The root filesystem is a persistent btrfs volume. A power-failure test kills QEMU during a write,
-          mounts the volume again and checks it with the host's <code>btrfs check</code>. It has run across 249 seeds.</p>
-      </article>
-      <article class="card">
-        <h3>Networking</h3>
-        <p>Inside Ferrix, <code>curl</code> can fetch over HTTPS and <code>git</code> can clone a repository.
-          The network stack includes TCP, UDP, IPv6 and netlink; Ferrix also serves SSH.</p>
-      </article>
-      <article class="card">
-        <h3>A userland of its own</h3>
-        <p><b>ferrousli</b> is Ferrix's C library, written in Rust. The <b>zinc</b> shell runs oh-my-zsh.
-          There is also an init and service manager, plus the uutils command-line tools.</p>
+        <p>Disk, network, graphics, input, sound and power drivers run as processes, each sealed in a job that
+          only ending leaves. An IOMMU limits their device access on x86-64 and AArch64. A crashed driver restarts.</p>
       </article>
       <article class="card">
         <h3>A desktop</h3>
-        <p><b>hyprix</b> is Ferrix's Wayland compositor. It reads <code>hyprland.conf</code>, tiles windows
-          and draws through virgl. Chrome can play video with sound on the desktop.</p>
+        <p><b>hyprix</b>, Ferrix's Wayland compositor, reads <code>hyprland.conf</code> and tiles windows, or floats
+          and snaps them, with an overview and title bars. GTK 4 and libadwaita programs run on it.</p>
       </article>
       <article class="card">
         <h3>Real hardware</h3>
-        <p>Ferrix has booted from the SD card of an STM32MP157D-DK1 board and on all eight cores of a
-          Pixel 7. Most of the tests run in QEMU, where <code>--accel auto</code> selects KVM, HVF or WHPX.</p>
+        <p>An Intel N150 mini PC boots Ferrix from its SATA drive, with its own network, USB, GPU and power
+          drivers. Ferrix has also booted on a Pixel 7's eight cores and an STM32MP157D-DK1 board.</p>
+      </article>
+      <article class="card">
+        <h3>Containers</h3>
+        <p>pid, user, mount, network, UTS, IPC and cgroup namespaces, cgroup v2 limits and seccomp filters. A test
+          runs an unprivileged container under a memory limit on all three architectures.</p>
+      </article>
+      <article class="card">
+        <h3>A userland of its own</h3>
+        <p><b>ferrousli</b> is Ferrix's C library, written in Rust. The <b>zinc</b> shell runs oh-my-zsh, and
+          behaves as <code>sh</code> when started as <code>sh</code>. <b>yserver</b> is its X server in Rust.</p>
+      </article>
+      <article class="card">
+        <h3>A kernel without Linux</h3>
+        <p>The build flag <code>linux_abi=off</code> builds a kernel with only Ferrix's own system calls: 1.4&nbsp;MB
+          of code against 7.4&nbsp;MB on x86-64. It is built, not yet booted or claimed for anything.</p>
       </article>
     </div>
   </div>
 </section>
 
-<section id="built" class="section">
-  <div class="wrap built">
-    <div>
-      <h2>Who wrote it</h2>
-      <p>Claude sessions write most of the code in separate git worktrees. The project owner sets
-        priorities, a coordinator manages merges, and a certification consultant reviews changes
-        to the kernel core.</p>
-      <p>Changes have to pass their tests before they land. If a change affects the boot image,
-        it also has to boot on all three architectures. The team has made mistakes, too. After one
-        shared git index silently reverted another session's work, we added a rule to prevent it.</p>
-      <p>The <a href="https://github.com/ferrix-os/ferrix/tree/main/docs/roadmap">roadmap</a> shows what is finished,
-        the <a href="https://github.com/ferrix-os/ferrix/blob/main/docs/BACKLOG.md">backlog</a> tracks what is left,
-        and <a href="https://github.com/ferrix-os/ferrix/blob/main/docs/CONVENTIONS.md">the working rules</a>
-        include the incidents behind them.</p>
-    </div>
-    <ol class="timeline" aria-label="Milestones">
-      <li><time datetime="2026-09-11">Sep 11</time> First public commit: boot, memory, traps</li>
-      <li><time datetime="2026-09-12">Sep 12</time> Ring 3 on three architectures; busybox runs</li>
-      <li><time datetime="2026-09-14">Sep 14</time> A ring-3 disk driver behind an IOMMU, and btrfs</li>
-      <li><time datetime="2026-09-16">Sep 16</time> Networking, threads, a first pixel on screen</li>
-      <li><time datetime="2026-09-22">Sep 22</time> <b><code>rustc</code> compiles and runs a program</b></li>
-      <li><time datetime="2026-09-23">Sep 23</time> <b>Ferrix builds its own image</b></li>
-      <li><time datetime="2026-09-26">Sep 26</time> Chrome plays video with sound on the desktop</li>
-      <li><time datetime="2026-09-29">Sep 29</time> Steam signs in, drawn through yserver</li>
-      <li><time datetime="2026-10-02">Oct 2</time> Steam's store at 60 frames a second</li>
-      <li><time datetime="2026-10-03">Oct 3</time> NVIDIA's driver on an RTX 3060; Ferrix builds itself on a Pixel 7</li>
-    </ol>
-  </div>
-</section>
-
-<section id="try" class="section alt">
+<section id="try" class="section">
   <div class="wrap">
     <h2>Try it</h2>
-    <p class="sub">Install Rust and QEMU first. You can run these commands on Linux, macOS or Windows.</p>
-    <pre class="term big"><span class="c"># clone and boot to a shell on the serial console</span>
+    <p class="sub">The quickest way is the release's desktop zip, which needs only QEMU. To build it
+      yourself, install Rust and QEMU first; the commands run on Linux, macOS or Windows.</p>
+    <pre class="term big"><span class="c"># the released desktop, no Rust needed (Linux or macOS)</span>
+curl -LO https://github.com/ferrix-os/ferrix/releases/latest/download/ferrix-x86_64-desktop.zip
+unzip ferrix-x86_64-desktop.zip &amp;&amp; sh ferrix-x86_64-desktop/run.sh
+
+<span class="c"># or clone and boot to a shell on the serial console</span>
 git clone https://github.com/ferrix-os/ferrix &amp;&amp; cd ferrix
 cargo xtask run --arch x86_64
 
 <span class="c"># the Wayland desktop with a terminal</span>
 cargo xtask run-compositor
 
-<span class="c"># ...with Chrome, rustc and cargo (fetch them first, see the README)</span>
-cargo xtask run-compositor --everything
-
 <span class="c"># run the project checks</span>
 cargo xtask check</pre>
     <p class="note">Quit QEMU with <kbd>Ctrl-A</kbd> <kbd>x</kbd>. The
-      <a href="https://github.com/ferrix-os/ferrix/blob/main/docs/GUIDE.md#getting-started">technical guide</a> covers every flag, the
-      board, and Windows.</p>
+      <a href="https://github.com/ferrix-os/ferrix/blob/main/docs/INSTALL.md">install guide</a> covers the zip on
+      Windows and Linux, and the
+      <a href="https://github.com/ferrix-os/ferrix/blob/main/docs/GUIDE.md#getting-started">technical guide</a> every flag,
+      Chrome and the Rust toolchain.</p>
   </div>
 </section>
 
-<section id="roadmap" class="section">
+<section id="roadmap" class="section alt">
   <div class="wrap">
     <h2>Where it's going</h2>
     <div class="road">
-      <div><h3 class="done">Done</h3><p>The boot test covers stages 0&ndash;12 on three architectures. <code>rustc</code> compiles and runs programs on Ferrix, and Ferrix builds its own image: on x86-64, and on Arm inside Ferrix on a Pixel 7. The desktop composites on the GPU, Chrome browses with sound, and Steam's store draws through yserver, Ferrix's X server in Rust. A person logs in on the console, through <code>authd</code>.</p></div>
-      <div><h3 class="doing">In progress</h3><p>Games from Steam's library. NVIDIA's own driver on an RTX 3060, which boots its GSP and answers <code>nvidia-smi</code>. Mount namespaces and seccomp, after pid, UTS, IPC and cgroup namespaces. A channel round trip as fast as seL4's, and shorter test runs.</p></div>
-      <div><h3>Further out</h3><p>Real-time domains, and bare metal with a GPU driver of Ferrix's own.</p></div>
+      <div><h3 class="done">Done</h3><p>The boot test covers three architectures. <code>rustc</code> compiles and runs programs on Ferrix, and Ferrix builds its own image. Chrome browses with sound, Steam runs through yserver, and Proton runs Windows programs. Containers with namespaces, cgroup limits and seccomp. Ferrix boots on an Intel N150 with its own drivers, Intel GPU included.</p></div>
+      <div><h3 class="doing">In progress</h3><p>Endfield without stutter on the N150. The GPU driver split into a keeper and a worker. A GNOME-like desktop on hyprix. A smaller kernel on the way to a microkernel, with a Linux layer that can be left out. NVIDIA's driver drawing the desktop.</p></div>
+      <div><h3>Further out</h3><p>Real-time domains, certification evidence an outside assessor could read, and Ferrix on more real machines.</p></div>
     </div>
-    <p class="note">As of 3 October 2026.</p>
-    <p class="note"><a href="https://github.com/ferrix-os/ferrix/tree/main/docs/roadmap">Read the full roadmap &rarr;</a></p>
+    <p class="note">As of 23 October 2026.</p>
+    <p class="note"><a href="https://github.com/ferrix-os/ferrix/blob/main/docs/roadmap/where-it-stands.md">Read where it stands &rarr;</a></p>
   </div>
 </section>
 
-<section id="faq" class="section alt">
+<section id="faq" class="section">
   <div class="wrap faq">
     <h2>FAQ</h2>
+    <details><summary>Who writes the code?</summary>
+      <p>A fleet of Claude Code sessions: a product owner session, worker agents in their own git worktrees,
+        a certification consultant and quality roles. A person, the customer, decides scope, priorities and
+        every question of judgement. The working rules and the tests are in the repository.</p></details>
     <details><summary>Is Ferrix based on Linux?</summary>
       <p>No. Ferrix has its own Rust kernel, drivers, file systems, C library, shell and compositor.
-        It implements the Linux system-call ABI used by the programs we test, so those binaries can run unchanged.
-        <code>uname -s</code> says <code>Ferrix</code>.</p></details>
-    <details><summary>Who writes the code?</summary>
-      <p>Mostly Claude sessions, working in separate git worktrees. The project owner sets priorities
-        and reviews the results. The tests and working rules are in the repository.</p></details>
+        It implements the Linux system-call ABI used by the programs it is tested with, so those binaries
+        run unchanged. <code>uname -s</code> says <code>Ferrix</code>.</p></details>
+    <details><summary>Is any of it certified?</summary>
+      <p>No. Certification of the kernel's core is an aim. A certification consultant, itself a Claude
+        session, reviews every change to that core before it lands. That review is internal, not
+        independent, and no outside assessor is involved.</p></details>
     <details><summary>Can I use it every day?</summary>
-      <p>No. Ferrix is an experimental system. It runs a desktop, a browser and a compiler, but
-        authentication, namespaces and seccomp are still being written.</p></details>
+      <p>No. Ferrix is an experimental system. It runs a desktop, a browser, a compiler and a game, but
+        most of its tests run in QEMU and much of it is unfinished.</p></details>
     <details><summary>How can I help?</summary>
       <p>Try booting it and file an issue if something fails. You can follow releases on GitHub.</p></details>
   </div>
