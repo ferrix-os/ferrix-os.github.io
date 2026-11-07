@@ -116,6 +116,8 @@
         <a class="btn btn-ghost" href="#built">How the agents work &rarr;</a>
       </div>
       <p class="arches">x86-64 &middot; AArch64 &middot; ARMv7-A &middot; MIT licensed &middot; experimental</p>
+      <p class="arches">Latest: <a href="https://github.com/ferrix-os/ferrix/releases/tag/v0.3.0">v0.3.0</a>, 8 November 2026:
+        hardware errors logged and survived, one program suspended in RAM, the first microkernel build.</p>
     </div>
     <figure class="hero-shot">
       <img src="assets/hero-n150.png" width="1920" height="1080"
@@ -127,8 +129,8 @@
 
 <section class="stats" aria-label="Ferrix in numbers">
   <div class="wrap stats-in">
-    <div><b>3,900+</b><span>commits on <code>main</code> since 11 September 2026</span></div>
-    <div><b>1.1M+</b><span>lines of Rust in the main repository</span></div>
+    <div><b>4,200+</b><span>commits on <code>main</code> since 11 September 2026</span></div>
+    <div><b>1.2M+</b><span>lines of Rust in the main repository</span></div>
     <div><b>3</b><span>architectures booted on every landing that changes the image</span></div>
     <div><b>1</b><span>person deciding what the fleet builds</span></div>
   </div>
@@ -171,6 +173,8 @@
       <li><time datetime="2026-10-25">Oct 25</time> Yoru, Ferrix's own desktop design, on hyprix</li>
       <li><time datetime="2026-10-29">Oct 29</time> <b>v0.2.0: the first live ISO, with a graphical installer</b></li>
       <li><time datetime="2026-10-30">Oct 30</time> A log of hardware errors, a RAM scrubber and core quarantine</li>
+      <li><time datetime="2026-11-05">Nov 5</time> The first microkernel build: Linux's system calls in a process of their own, on AArch64</li>
+      <li><time datetime="2026-11-08">Nov 8</time> <b>v0.3.0: surviving bad hardware, and one program suspended in RAM</b></li>
     </ol>
   </div>
 </section>
@@ -186,6 +190,19 @@
       <figure><img src="assets/live-installer.png" width="1920" height="1080" loading="lazy" alt="The live ISO's Yoru desktop with the Ferrix installer's welcome page"><figcaption>The live ISO in QEMU: Yoru and the installer.</figcaption></figure>
       <figure><img src="assets/installer-summary.png" width="1920" height="1080" loading="lazy" alt="The installer's summary page before it erases the chosen disk"><figcaption>The installer's last page, before anything is written.</figcaption></figure>
     </div>
+  </div>
+</section>
+
+<section class="section" aria-label="New in v0.3.0">
+  <div class="wrap">
+    <h2>New in v0.3.0</h2>
+    <p class="sub">Ferrix reads the processor's error banks and survives memory that fails, and the compositor can
+      freeze one program in RAM and thaw it where it stopped. Both pictures are the v0.3.0 live ISO in QEMU.</p>
+    <div class="gallery two">
+      <figure><img src="assets/suspend.png" width="1920" height="1080" loading="lazy" alt="A program suspended with SUPER+Z: its window, a clock stopped at 23:52:12, at half opacity over ferrofetch, while a terminal reads its cgroup as frozen"><figcaption>SUPER+Z froze the clock's terminal: half opacity, <code>frozen 1</code>, and <code>date</code> 36 seconds later.</figcaption></figure>
+      <figure><img src="assets/machine-check.png" width="1920" height="1080" loading="lazy" alt="A terminal showing uname as Ferrix 0.3.0 and /proc/ferrix-mce counting one corrected error on cpu2"><figcaption>A corrected memory error injected through QEMU's monitor, logged and counted.</figcaption></figure>
+    </div>
+    <p class="note"><a href="https://github.com/ferrix-os/ferrix/releases/tag/v0.3.0">Read the v0.3.0 release notes &rarr;</a></p>
   </div>
 </section>
 
@@ -209,11 +226,11 @@
         <p>The guest reads the rust-lang.org release of <code>rustc</code> and Debian's glibc from btrfs.
           Compiling <code>hello.rs</code> calls <code>cc</code>, <code>collect2</code> and <code>rust-lld</code>,
           with about 350&nbsp;MiB of shared libraries mapped from disk. The test then runs the program.</p>
-        <pre class="term"><span class="ts">  11.41 |</span> FERRIX-BOOT-OK stages 1-12
-<span class="ts">  12.38 |</span> rustc 1.97.1 (8bab26f4f 2026-07-14)
-<span class="ts">  12.40 |</span> LLVM version: 22.1.6
-<span class="ts">  13.28 |</span> cargo 1.97.1 (c980f4866 2026-06-30)
-<span class="ts hi">  18.17 |</span><span class="hi"> rustc-gate: hello from rustc on Ferrix</span></pre>
+        <pre class="term"><span class="ts">  37.16 |</span> FERRIX-BOOT-OK stages 1-12
+<span class="ts">  37.41 |</span> rustc 1.99.1 (58cf8f9c3 2026-10-13)
+<span class="ts">  37.42 |</span> LLVM version: 23.1.1
+<span class="ts">  37.53 |</span> cargo 1.99.1 (5f94df478 2026-08-27)
+<span class="ts hi">  38.79 |</span><span class="hi"> rustc-gate: hello from rustc on Ferrix</span></pre>
       </article>
       <article>
         <h3><code>cargo xtask test-selfhost</code></h3>
@@ -279,8 +296,8 @@
       <article class="card">
         <h3>When hardware fails</h3>
         <p>On x86-64 Ferrix logs machine checks, on Intel and AMD, and a bad user page ends that program, not the
-          kernel; tests inject these errors under QEMU. An unstable core can be taken out of service, and free memory is
-          tested while the machine idles.</p>
+          kernel; tests inject these errors under QEMU. A bad frame stays retired across a reboot, an unstable core is
+          taken out of service, and free memory is tested while the machine idles.</p>
       </article>
       <article class="card">
         <h3>Logs that outlast a crash</h3>
@@ -298,9 +315,11 @@
           helix editor, and Ferrix builds its own image. Claude Code runs a full session on its desktop.</p>
       </article>
       <article class="card">
-        <h3>A kernel without Linux</h3>
-        <p>The build flag <code>linux_abi=off</code> builds a kernel with only Ferrix's own system calls: 1.4&nbsp;MB
-          of code against 7.4&nbsp;MB on x86-64. It is built, not yet booted or claimed for anything.</p>
+        <h3>On the way to a microkernel</h3>
+        <p>In the <code>fast</code> build, Linux's system calls, btrfs and the network switch run as processes,
+          <code>linuxd</code>, <code>btrfsd</code> and <code>netd</code>, and the kernel keeps only address spaces,
+          memory, channels and scheduling. It runs Linux programs on AArch64 in QEMU; the live ISO keeps the Linux layer
+          in the kernel, and nothing of it is claimed yet.</p>
       </article>
     </div>
     <p class="note">What this page says about the N150 comes from runs on that one machine, not from a gate.
@@ -362,10 +381,10 @@ cargo xtask check</pre>
     <h2>Where it's going</h2>
     <div class="road">
       <div><h3 class="done">Done</h3><p>The boot test covers three architectures. <code>rustc</code> compiles and runs programs on Ferrix, and Ferrix builds its own image. Chrome browses with sound, Steam runs through yserver, and Proton runs Windows programs. Containers with namespaces, cgroup limits and seccomp. Ferrix boots on an Intel N150 with its own drivers, Intel GPU included. A live ISO with Yoru and a graphical installer.</p></div>
-      <div><h3 class="doing">In progress</h3><p>A faster, smoother Endfield on the N150, where the GPU is now the limit. The rest of Yoru. The GPU driver split into a keeper and a worker. A smaller kernel on the way to a microkernel, with a Linux layer that can be left out. The desktop composited on NVIDIA's card by default. Signed system images.</p></div>
+      <div><h3 class="doing">In progress</h3><p>A faster, smoother Endfield on the N150, where the GPU is now the limit. The rest of Yoru. The GPU driver split into a keeper and a worker. The microkernel: the <code>fast</code> build on x86-64, then the <code>max</code> build, with the kernel under its size budget. The desktop composited on NVIDIA's card by default. Signed system images.</p></div>
       <div><h3>Further out</h3><p>Installing on a PC from a USB stick, Secure Boot, real-time domains, certification evidence an outside assessor could read, and Ferrix on more real machines.</p></div>
     </div>
-    <p class="note">As of 3 November 2026.</p>
+    <p class="note">As of 8 November 2026.</p>
     <p class="note"><a href="https://github.com/ferrix-os/ferrix/blob/main/docs/roadmap/where-it-stands.md">Read where it stands &rarr;</a></p>
   </div>
 </section>
